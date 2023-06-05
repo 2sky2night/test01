@@ -1,5 +1,5 @@
 <template>
-  <div :class="{vertical}" class="slider-container">
+  <div :class="{vertical}" class="m-slider-container">
     <!--轨道-->
     <div ref="sliderOrbit" @click="changeByClick" class="slider-orbit">
       <!--滑块-->
@@ -79,7 +79,7 @@ defineOptions({
 </script>
 
 <style scoped lang='scss'>
-.slider-container {
+.m-slider-container {
   height: 20px;
   display: flex;
   align-items: center;

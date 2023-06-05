@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import TestSlider from './test/TestSlider.vue';
 import TestWatermark from './test/TestWatermark.vue';
-
+import TestTree from './test/TestTree.vue';
 </script>
 
 <template>
   <div class="main">
-    <TestSlider />
+    <TestTree />
   </div>
 </template>
 

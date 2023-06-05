@@ -1,5 +1,5 @@
 <template>
-  <div class="watermark-container">
+  <div class="m-watermark-container">
     <slot name="default"></slot>
     <div v-if="isShow" :style="{ background: `url(${ src })` }" class="watermark"></div>
   </div>
@@ -43,7 +43,7 @@ defineOptions({
 </script>
 
 <style scoped lang='scss'>
-.watermark-container {
+.m-watermark-container {
   position: relative;
 
   .watermark {
