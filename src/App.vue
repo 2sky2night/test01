@@ -1,16 +1,18 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import Minput from '@/components/input/index.vue'
+import TestSlider from './test/TestSlider.vue';
 
-const name = ref('')
 
 </script>
 
 <template>
-  <div>
-    <Minput v-model="name" />
-    {{ name }}
+  <div class="main">
+    <TestSlider />
   </div>
 </template>
 
-<style scoped></style>
+<style scoped lang="scss">
+.main {
+  height: 100vh;
+  width: 100vw;
+}
+</style>
