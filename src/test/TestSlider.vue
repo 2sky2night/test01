@@ -1,6 +1,8 @@
 <template>
-  <Slider v-model="count" />
-  <button @click="count++">count++</button>
+  <div>
+    <Slider v-model="count" />
+    <button @click="()=>count++">count++</button>
+  </div>
 </template>
 
 <script lang='ts' setup>
@@ -9,4 +11,9 @@ import Slider from '@/components/slider/index.vue'
 const count = ref(0)
 </script>
 
-<style scoped lang='scss'></style>
+<style scoped lang='scss'>
+div{
+  box-sizing: border-box;
+  padding: 10px;
+}
+</style>
