@@ -14,6 +14,6 @@ const count = ref(0)
 <style scoped lang='scss'>
 div{
   box-sizing: border-box;
-  padding: 10px;
+  padding: 20px;
 }
 </style>

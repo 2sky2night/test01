@@ -1,5 +1,5 @@
 <template>
-  <div class="slider-container">
+  <div :class="{vertical}" class="slider-container">
     <!--轨道-->
     <div ref="sliderOrbit" @click="changeByClick" class="slider-orbit">
       <!--滑块-->
@@ -14,9 +14,15 @@
 <script lang='ts' setup>
 import { watch, ref } from 'vue'
 
-const props = defineProps<{
+const props = withDefaults(defineProps<{
   modelValue: number;
-}>()
+  /**
+   * 垂直放置？默认水平
+   */
+  vertical?: boolean;
+}>(), {
+  vertical:false
+})
 
 const emit = defineEmits<{
   'update:modelValue': [ value: number ]
@@ -30,6 +36,8 @@ const sliderOrbit = ref<HTMLDivElement | null>(null)
 watch(() => props.modelValue, (v) => {
   if (v >= 100) {
     emit('update:modelValue', 100)
+  } else if(v<0){
+    emit('update:modelValue',0)
   }
 })
 
@@ -72,20 +80,24 @@ defineOptions({
 
 <style scoped lang='scss'>
 .slider-container {
-  height: 50px;
+  height: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
-
+  &.vertical{
+    transform: rotate(-90deg);
+  }
   // 轨道
   .slider-orbit {
     height: 5px;
     width: 100%;
+    cursor: pointer;
     background-color: #eee;
 
     // 滑块条
     .slider-strip {
       transition: .2s;
+      cursor: pointer;
       height: 100%;
       background-color: skyblue;
       position: relative;
