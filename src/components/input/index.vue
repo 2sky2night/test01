@@ -21,13 +21,26 @@ const props = withDefaults(defineProps<{
 })
 
 const emit = defineEmits<{
-  'update:modelValue': [ value: string ]
+  'update:modelValue': [ value: string ];
+  'change':[value:string]
 }>()
 
+/**
+ * 输入框内容更新时的回调
+ * @param e 
+ */
 function handleChange (e: Event) {
-  emit('update:modelValue', (e.target as HTMLInputElement).value)
+  const value = (e.target as HTMLInputElement).value;
+  // 先通知父组件修改值
+  emit('update:modelValue', value)
+  // 修改完成后分发修改完成的自定义事件
+  emit('change', value)
+
 }
 
+/**
+ * 重置
+ */
 function reset () {
   emit('update:modelValue', '')
 }
