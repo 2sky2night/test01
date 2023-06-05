@@ -1,6 +1,6 @@
 <template>
   <div class="m-input-container">
-    <input :placeholder="placeholder" :class="`m-input ${size}`" :value="modelValue" @input="handleChange" />
+    <input :disabled="disabled" :placeholder="placeholder" :class="`m-input ${size} ${disabled?'disabled':''}`" :value="modelValue" @input="handleChange" />
     <button v-if="reset&&modelValue" @click="reset" class="m-input-reset-btn">x</button>
   </div>
 </template>
@@ -12,10 +12,12 @@ const props = withDefaults(defineProps<{
   placeholder?: string;
   size?: 'small' | 'normal' | 'large';
   reset?: boolean;
+  disabled?: boolean;
 }>(), {
   placeholder: '请输入内容',
   size: 'normal',
-  reset:true
+  reset: true,
+  disabled:false
 })
 
 const emit = defineEmits<{
@@ -63,6 +65,9 @@ defineOptions({
     &.large{
       padding: 8px 10px;
       font-size: 18px;
+    }
+    &.disabled{
+      cursor:not-allowed;
     }
   }
   .m-input-reset-btn{
